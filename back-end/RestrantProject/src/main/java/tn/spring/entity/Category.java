@@ -2,6 +2,7 @@ package tn.spring.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,8 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 
@@ -36,5 +40,12 @@ public class Category implements Serializable {
 	private String name ;
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	private Set<Order> orders;
+	
+	@Column(name="date_creat")
+	@CreationTimestamp
+	private Date dateCreat;
+	@Column(name="date_update")
+	@UpdateTimestamp
+	private Date dateUpdate;
 
 }

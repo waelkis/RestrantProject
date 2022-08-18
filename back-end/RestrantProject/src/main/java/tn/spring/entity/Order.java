@@ -3,6 +3,7 @@ package tn.spring.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 
@@ -37,6 +42,7 @@ public class Order implements Serializable{
 	@Column(name="img")
 	private String img;
 	@Column(name="discription")
+	@Lob
     private String discription;
 	
 	
@@ -46,5 +52,11 @@ public class Order implements Serializable{
 	  @JoinColumn(name="id_category")
 	  private Category category;
 	 
+	  @Column(name="date_creat")
+		@CreationTimestamp
+		private Date dateCreat;
+		@Column(name="date_update")
+		@UpdateTimestamp
+		private Date dateUpdate;
 
 }
