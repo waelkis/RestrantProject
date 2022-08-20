@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 
 import lombok.Getter;
@@ -38,6 +40,7 @@ public class Category implements Serializable {
 	private Long id;
 	@Column(name="name")
 	private String name ;
+	@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	private Set<Order> orders;
 	

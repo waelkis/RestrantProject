@@ -18,6 +18,8 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 
 import lombok.Getter;
@@ -46,7 +48,7 @@ public class Order implements Serializable{
     private String discription;
 	
 	
-	
+	@JsonIgnore
 	  @ManyToOne
 	  
 	  @JoinColumn(name="id_category")
